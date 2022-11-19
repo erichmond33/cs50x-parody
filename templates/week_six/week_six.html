@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<!DOCTYPE html><html lang="en-us">
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/6/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta property="og:description" content="Introduction to the intellectual enterprises of computer science and the art of programming. This course teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, and software engineering. Languages include C, Python, and SQL plus students' choice of: HTML, CSS, and JavaScript (for web development); Java or Swift (for mobile app development); or Lua (for game development). Problem sets inspired by the arts, humanities, social sciences, and sciences. Course culminates in a final project. Designed for concentrators and non-concentrators alike, with or without prior programming experience. Two thirds of CS50 students have never taken CS before. Among the overarching goals of this course are to inspire students to explore unfamiliar waters, without fear of failure, create an intensive, shared experience, accessible to all students, and build community among students.">
+
+<meta property="og:image" content="https://img.youtube.com/vi/e9Eds2Rc_x8/maxresdefault.jpg"><meta property="og:title" content="Week 6 - CS50x"><link href="https://cs50.harvard.edu/x/2020/favicon.ico?1608231730" rel="icon">
+
+<!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+<!-- http://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/jquery/dist/jquery.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap/dist/js/bootstrap.bundle.min.js?1608231730"></script>
+
+<!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+<link href="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1608231730"></script>
+
+<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+<link href="https://cs50.harvard.edu/x/2020/assets/@fortawesome/fontawesome-free/css/all.min.css?1608231730" rel="stylesheet">
+
+<!-- https://moment.github.io/luxon/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/luxon.min.js?1608231730"></script>
+
+<!-- http://docs.mathjax.org/ -->
+<!-- https://www.jsdelivr.com/package/npm/mathjax?path=es5 -->
+<script crossorigin="anonymous" integrity="sha256-+nfSJ1LiSvANSK3wvi6FjM+oFwoIQvURU1frozp5z6o=" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-chtml.js"></script>
+
+
+
+<link href="https://cs50.harvard.edu/x/2020/assets/page.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/jekyll-theme-cs50.js?1608231730"></script>
+
+<script>
+    window.CS50 = {
+        locale: "en",
+        tz: "America/New_York"
+    };
+</script>
+
+<title>Week 6 - CS50x</title>
+
+{% endblock %}
+
+
+{% block main %}
+
+                <main class="col-md">
+
+                   <ul class="nav">
+                    <li class="nav-item">
+                      <h1>Week 6</h1>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_six#dna">DNA</a></h3>
+                    </li>
+                  </ul>
+
+  <!-- Scratch --->
+
+  <h2><a id="dna" href="/dna">DNA</a>&nbsp;&nbsp;&nbsp;<---- My Project!</h2>
+
+  <p>DNA, the carrier of genetic information in living things, has been used in criminal justice for decades. But how, exactly, does DNA profiling work? Given a sequence of DNA, how can forensic investigators identify to whom it belongs?</p>
+
+  <p>Well, DNA is really just a sequence of molecules called nucleotides, arranged into a particular shape (a double helix). Each nucleotide of DNA contains one of four different bases: adenine (A), cytosine (C), guanine (G), or thymine (T). Every human cell has billions of these nucleotides arranged in sequence. Some portions of this sequence (i.e. genome) are the same, or at least very similar, across almost all humans, but other portions of the sequence have a higher genetic diversity and thus vary more across the population.</p>
+
+  <p>One place where DNA tends to have high genetic diversity is in Short Tandem Repeats (STRs). An STR is a short sequence of DNA bases that tends to repeat consecutively numerous times at specific locations inside of a person’s DNA. The number of times any particular STR repeats varies a lot among individuals. In the DNA samples below, for example, Alice has the STR <code class="language-plaintext highlighter-rouge">AGAT</code> repeated four times in her DNA, while Bob has the same STR repeated five times.</p>
+
+  <p><img src="https://cs50.harvard.edu/x/2020/psets/6/dna/strs.png" alt="Sample STRs"></p>
+
+  <p>Using multiple STRs, rather than just one, can improve the accuracy of DNA profiling. If the probability that two people have the same number of repeats for a single STR is 5%, and the analyst looks at 10 different STRs, then the probability that two DNA samples match purely by chance is about 1 in 1 quadrillion (assuming all STRs are independent of each other). So if two DNA samples match in the number of repeats for each of the STRs, the analyst can be pretty confident they came from the same person. CODIS, The FBI’s <a href="https://www.fbi.gov/services/laboratory/biometric-analysis/codis/codis-and-ndis-fact-sheet">DNA database</a>, uses 20 different STRs as part of its DNA profiling process.</p>
+
+  <h3>Implementaion</h3>
+
+  <p>Your task is to write a program that will take a sequence of DNA and a CSV file containing STR counts for a list of individuals and then output to whom the DNA (most likely) belongs.</p>
+
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+</body>
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/6/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+</html>
+
+{% endblock %}

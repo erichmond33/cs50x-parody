@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="test_project/templates/week_eight/styles.css" rel="stylesheet" type="text/css" />
+
+    <title>Eli's Blog</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /*A bunch of header stuff */
+
+      nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        box-shadow: 0px 5px 15px 5px;
+
+      }
+
+      .logo{
+        color:black;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 20px;
+
+      }
+
+      .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+      }
+
+      .nav-links li{
+        list-style: none;
+      }
+
+      .nav-links a{
+        color: black;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .burger{
+        display: none;
+      }
+
+      .burger div{
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+
+
+      /* Backround image */
+
+      .background{
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+        background-size: 35%;
+      }
+
+      /* Link to another page */
+
+      #CTCL {
+        position: fixed;
+        margin-left: 80%;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Tabe of contents */
+
+      #table_of_contents {
+        margin-left: 5%;
+        position:fixed;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Basic contents of a post */
+
+      #contents {
+        overflow-y: scroll;
+        height: 10em;
+        font-size: 1.2em;
+      }
+
+      h3 {
+      margin-left: 30%;
+      }
+
+      p.posts {
+        text-align: center;
+        overflow-y: scroll;
+        width: 40%;
+        height: 15em;
+        margin-left: 35%;
+        margin-right: 30%;
+      }
+
+      br {
+      font-size: 3em;
+      }
+
+      em.quotes {
+        font-size: 1.25em;
+
+      }
+
+      /*ALL of my links*/
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      a:hover {
+      text-decoration-style: wavy;
+      text-decoration: underline;
+      }
+
+
+      /* One time things that I will never change again */
+      iframe{
+        width: 100%;
+      }
+
+      #Throwback_Monday{
+        height: 100%;
+      }
+
+      #qrcode
+      {
+        height: 100%;
+      }
+
+      #Movie
+      {
+        height: 100%;
+      }
+
+
+      @media screen and (max-width: 1200px)
+      {
+        .nav-links{
+          width: 60%;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 10%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 80%;
+          height: 15em;
+          margin-left: 15%;
+          margin-right: 10%;
+        }
+      }
+      @media screen and (max-width: 620px)
+      {
+        body{
+          overflow-x: hidden;
+        }
+
+        .nav-links{
+          position: absolute;
+          right: 0px;
+          height: 92vh;
+          top: 8vh;
+          background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+          background-size: 35%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in;
+        }
+
+        .nav-links li{
+          opacity: 0;
+        }
+
+        .burger{
+          display: block;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 5%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 75%;
+          height: 15em;
+          margin-left: 10%;
+          margin-right: 5%;
+        }
+      }
+
+
+
+      /*More stuff for the damn header*/
+
+      .nav-active{
+        transform: translateX(0%);
+      }
+
+      @keyframes navLinkFade{
+        from{
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to{
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+      .toggle .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+      }
+      .toggle .line2{
+        opacity: 0;
+      }
+      .toggle .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+      }
+
+    </style>
+
+  </head>
+  <body class="text">
+    <div class="background">
+
+    <!---  Title --->
+      <nav>
+        <div class="logo">
+          <h4>Eli's Blog</h4>
+        </div>
+        <ul class="nav-links">
+          <li class="links">
+            <a href="/homepage">Home</a>
+          </li>
+          <li class="links">
+            <a href="/movies_blog">Movies</a>
+          </li>
+          <li class="links">
+            <a href="/books_blog">Books</a>
+          </li>
+          <li class="links">
+            <a href="/quotes_blog">Quotes</a>
+          </li>
+        </ul>
+
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+
+
+
+
+    <br></br>
+
+    <!--- Blog Post Format--->
+        <h3>The Wolf of Wall Street</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/iszwuX1AK6A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>8 Mile</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/axGVrfwm9L4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>The Hangover</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/tcdUhdOlz9M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>Masterminds</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/zIkzuXDhCcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>Step Brothers</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/CewglxElBK0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+
+  </div>
+
+    <script>
+      const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index / 7);
+          link.style.animation = 'navLinkFade 1s ease forwards 1s';
+        });
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    </script>
+  </body>
+</html>

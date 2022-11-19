@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<!DOCTYPE html><html lang="en-us">
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:45 GMT -->
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta property="og:description" content="Introduction to the intellectual enterprises of computer science and the art of programming. This course teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, and software engineering. Languages include C, Python, and SQL plus students' choice of: HTML, CSS, and JavaScript (for web development); Java or Swift (for mobile app development); or Lua (for game development). Problem sets inspired by the arts, humanities, social sciences, and sciences. Course culminates in a final project. Designed for concentrators and non-concentrators alike, with or without prior programming experience. Two thirds of CS50 students have never taken CS before. Among the overarching goals of this course are to inspire students to explore unfamiliar waters, without fear of failure, create an intensive, shared experience, accessible to all students, and build community among students.">
+
+<meta property="og:image" content="https://img.youtube.com/vi/e9Eds2Rc_x8/maxresdefault.jpg"><meta property="og:title" content="Week 1 - CS50x"><link href="https://cs50.harvard.edu/x/2020/favicon.ico?1608231730" rel="icon">
+
+<!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+<!-- http://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/jquery/dist/jquery.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap/dist/js/bootstrap.bundle.min.js?1608231730"></script>
+
+<!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+<link href="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1608231730"></script>
+
+<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+<link href="https://cs50.harvard.edu/x/2020/assets/@fortawesome/fontawesome-free/css/all.min.css?1608231730" rel="stylesheet">
+
+<!-- https://moment.github.io/luxon/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/luxon.min.js?1608231730"></script>
+
+<!-- http://docs.mathjax.org/ -->
+<!-- https://www.jsdelivr.com/package/npm/mathjax?path=es5 -->
+<script crossorigin="anonymous" integrity="sha256-+nfSJ1LiSvANSK3wvi6FjM+oFwoIQvURU1frozp5z6o=" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-chtml.js"></script>
+
+
+
+<link href="https://cs50.harvard.edu/x/2020/assets/page.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/jekyll-theme-cs50.js?1608231730"></script>
+
+
+<style>
+  .pyrimid {
+    text-align: center;
+    font-family: monospace;
+  }
+
+</style>
+
+<script>
+    window.CS50 = {
+        locale: "en",
+        tz: "America/New_York"
+    };
+</script>
+
+<title>Week 5 - CS50x</title>
+
+{% endblock %}
+
+
+{% block main %}
+
+                <main class="col-md">
+                    <main class="col-md">
+                  <ul class="nav">
+                    <li class="nav-item">
+                      <h1>Week 5</h1>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_five#speller">Speller</a></h3>
+                    </li>
+                  </ul>
+
+<!-- Speller --->
+
+  <h2>Speller</h2>
+
+  <form action="/speller" method="post">
+      <div class="form-row">
+
+        <div class="col-md-12 mb-3">
+            <label>Select a text</label>
+            <select class="custom-select" name="v2" required>
+              <option value="">Choose a text</option>
+              <option value="aca.txt">aca.txt</option>
+              <option value="austen.txt">austen.txt</option>
+              <option value="bible.txt">bible.txt</option>
+              <option value="birdman.txt">birdman.txt</option>
+              <option value="burnett.txt">burnett.txt</option>
+              <option value="carroll.txt">carroll.txt</option>
+              <option value="cat.txt">cat.txt</option>
+              <option value="constitution.txt">constitution.txt</option>
+              <option value="federalist.txt">federalist.txt</option>
+              <option value="grimm.txt">grimm.txt</option>
+              <option value="her.txt">her.txt</option>
+              <option value="holmes.txt">holmes.txt</option>
+              <option value="homer.txt">homer.txt</option>
+              <option value="koran.txt">koran.txt</option>
+              <option value="lalaland.txt">lalaland.txt</option>
+              <option value="mansfield.txt">mansfield.txt</option>
+              <option value="pneumonoultramicroscopicsilicovolcanoconiosis.txt">pneumonoultramicroscopicsilicovolcanoconiosis.txt</option>
+              <option value="revenant.txt">revenant.txt</option>
+              <option value="rinehart.txt">rinehart.txt</option>
+              <option value="shakespeare.txt">shakespeare.txt</option>
+              <option value="stein.txt">stein.txt</option>
+              <option value="stoker.txt">stoker.txt</option>
+              <option value="surgery.txt">surgery.txt</option>
+              <option value="tolstoy.txt">tolstoy.txt</option>
+              <option value="wells.txt">wells.txt</option>
+              <option value="whittier.txt">whittier.txt</option>
+              <option value="wordsworth.txt">wordsworth.txt</option>
+              <option value="xueqin1.txt">xueqin1.txt</option>
+              <option value="xueqin2.txt">xueqin2.txt</xue></option>
+
+            </select>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Spell Check</button>
+
+  </form>
+
+  <h3>Text: {{ input2 }}</h3>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight pyrimid"><code>
+{{ summary }}
+  </code></pre></div></div>
+
+{% for i in range(len) %}
+<div id="accordion">
+          <div class="card">
+              <div class="card-header" id="headingOne">
+                <h3 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#hexdata" aria-expanded="false" aria-controls="collapseOne">
+                    <h3>
+                      Misspelled Words
+                    </h3>
+                  </button>
+                </h3>
+              </div>
+
+              <div id="hexdata" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight pyrimid"><code>
+
+                    {{ output }}
+                      </code></pre></div></div>
+                </div>
+              </div>
+          </div>
+    </div>
+{% endfor %}
+
+{% for i in range(len2) %}
+<div id="accordion">
+          <div class="card">
+              <div class="card-header" id="headingOne">
+                <h3 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#hexdat" aria-expanded="false" aria-controls="collapseOne">
+                    <h3>
+                      Dictionary
+                    </h3>
+                  </button>
+                </h3>
+              </div>
+
+              <div id="hexdat" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+                    {{ dicdata }}
+                </div>
+              </div>
+          </div>
+    </div>
+{% endfor %}
+
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+</body>
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:45 GMT -->
+</html>
+
+{% endblock %}

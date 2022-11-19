@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="test_project/templates/week_eight/styles.css" rel="stylesheet" type="text/css" />
+
+    <title>Eli's Blog</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /*A bunch of header stuff */
+
+      nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        box-shadow: 0px 5px 15px 5px;
+
+      }
+
+      .logo{
+        color:black;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 20px;
+
+      }
+
+      .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+      }
+
+      .nav-links li{
+        list-style: none;
+      }
+
+      .nav-links a{
+        color: black;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .burger{
+        display: none;
+      }
+
+      .burger div{
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+
+
+      /* Backround image */
+
+      .background{
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+        background-size: 35%;
+      }
+
+      /* Link to another page */
+
+      #CTCL {
+        position: fixed;
+        margin-left: 80%;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Tabe of contents */
+
+      #table_of_contents {
+        margin-left: 5%;
+        position:fixed;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Basic contents of a post */
+
+      #contents {
+        overflow-y: scroll;
+        height: 10em;
+        font-size: 1.2em;
+      }
+
+      h3 {
+      margin-left: 30%;
+      }
+
+      p.posts {
+        text-align: center;
+        overflow-y: scroll;
+        width: 40%;
+        height: 15em;
+        margin-left: 35%;
+        margin-right: 30%;
+      }
+
+      br {
+      font-size: 3em;
+      }
+
+      em.quotes {
+        font-size: 1.25em;
+
+      }
+
+      /*ALL of my links*/
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      a:hover {
+      text-decoration-style: wavy;
+      text-decoration: underline;
+      }
+
+
+      /* One time things that I will never change again */
+      iframe{
+        width: 100%;
+      }
+
+      #Throwback_Monday{
+        height: 100%;
+      }
+
+      #qrcode
+      {
+        height: 100%;
+      }
+
+      #Movie
+      {
+        height: 100%;
+      }
+
+
+      @media screen and (max-width: 1200px)
+      {
+        .nav-links{
+          width: 60%;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 10%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 80%;
+          height: 15em;
+          margin-left: 15%;
+          margin-right: 10%;
+        }
+      }
+      @media screen and (max-width: 620px)
+      {
+        body{
+          overflow-x: hidden;
+        }
+
+        .nav-links{
+          position: absolute;
+          right: 0px;
+          height: 92vh;
+          top: 8vh;
+          background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+          background-size: 35%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in;
+        }
+
+        .nav-links li{
+          opacity: 0;
+        }
+
+        .burger{
+          display: block;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 5%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 75%;
+          height: 15em;
+          margin-left: 10%;
+          margin-right: 5%;
+        }
+      }
+
+
+
+      /*More stuff for the damn header*/
+
+      .nav-active{
+        transform: translateX(0%);
+      }
+
+      @keyframes navLinkFade{
+        from{
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to{
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+      .toggle .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+      }
+      .toggle .line2{
+        opacity: 0;
+      }
+      .toggle .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+      }
+
+    </style>
+
+  </head>
+  <body class="text">
+    <div class="background">
+
+    <!---  Title --->
+      <nav>
+        <div class="logo">
+          <h4>Eli's Blog</h4>
+        </div>
+        <ul class="nav-links">
+          <li class="links">
+            <a href="/homepage">Home</a>
+          </li>
+          <li class="links">
+            <a href="/movies_blog">Movies</a>
+          </li>
+          <li class="links">
+            <a href="/books_blog">Books</a>
+          </li>
+          <li class="links">
+            <a href="/quotes_blog">Quotes</a>
+          </li>
+        </ul>
+
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+
+
+
+    <br></br>
+
+    <!--- Blog Post Format--->
+        <h3>Arnold Schwarzenegger</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <br></br>
+            <em class="quotes">For me life is continuously being hungry. The meaning of life is not simply to exist, to survive, but to move ahead, to go up, to achieve, to conquer.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">The mind is the limit. As long as the mind can envision the fact that you can do something, you can do it, as long as you really believe 100 percent.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">Strength does not come from winning. Your struggles develop your strengths. When you go through hardships and decide not to surrender, that is strength.</em>
+            <br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>Alan Turing</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <br></br>
+            <em class="quotes">No, I'm not interested in developing a powerful brain. All I'm after is just a mediocre brain, something like the President of the American Telephone and Telegraph Company.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">I believe that at the end of the century the use of words and general educated opinion will have altered so much that one will be able to speak of machines thinking without expecting to be contradicted.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">Machines take me by surprise with great frequency.</em>
+            <br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>Steve Jobs</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <br></br>
+            <em class="quotes">Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking. Don't let the noise of others' opinions drown out your own inner voice. And most important, have the courage to follow your heart and intuition.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">Great things in business are never done by one person. They're done by a team of people.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">My favorite things in life don't cost any money. It's really clear that the most precious resource we all have is time.</em>
+            <br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>Elon Musk</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <br></br>
+            <em class="quotes">When something is important enough, you do it even if the odds are not in your favor.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">I think it's very important to have a feedback loop, where you're constantly thinking about what you've done and how you could be doing it better. I think that's the single best piece of advice: constantly think about how you could be doing things better and questioning yourself.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">There have to be reasons that you get up in the morning and you want to live. Why do you want to live? What's the point? What inspires you? What do you love about the future? If the future does not include being out there among the stars and being a multi-planet species, I find that incredibly depressing.</em>
+            <br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3>David Goggins</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <br></br>
+            <em class="quotes">The only way you gain mental toughness is to do things you're not happy doing. If you continue doing things that you're satisfied and make you happy, you're not getting stronger. You're staying where you're at. Either you're getting better, or you're getting worse. You're not staying the same.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">I'm different than most people. When I cross the finish line of a big race, I see that people are ecstatic, but I'm thinking about what I'm going to do tomorrow. It's as if my journey is everlasting, and there is no finish line.</em>
+            <br></br>
+
+            <br></br>
+            <em class="quotes">The reason I became 297 pounds is because that was comfortable. What was very uncomfortable was running. What was very uncomfortable was being on a diet. What was very uncomfortable was trying to face things that I didn't want to face. And I also realized, when I was really big, I had no growth. Why? Because I was living comfortable.</em>
+            <br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+
+  </div>
+
+    <script>
+      const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index / 7);
+          link.style.animation = 'navLinkFade 1s ease forwards 1s';
+        });
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="test_project/templates/week_eight/styles.css" rel="stylesheet" type="text/css" />
+
+    <title>Eli's Blog</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /*A bunch of header stuff */
+
+      nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        box-shadow: 0px 5px 15px 5px;
+
+      }
+
+      .logo{
+        color:black;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 20px;
+
+      }
+
+      .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 50%;
+      }
+
+      .nav-links li{
+        list-style: none;
+      }
+
+      .nav-links a{
+        color: black;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .burger{
+        display: none;
+      }
+
+      .burger div{
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+
+
+      /* Backround image */
+
+      .background{
+        background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+        background-size: 35%;
+      }
+
+      /* Link to another page */
+
+      #CTCL {
+        position: fixed;
+        margin-left: 80%;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Tabe of contents */
+
+      #table_of_contents {
+        margin-left: 5%;
+        position:fixed;
+        box-shadow: 0px 5px 15px 5px;
+        text-align: center;
+        padding: 1%;
+      }
+
+      /* Basic contents of a post */
+
+      #contents {
+        overflow-y: scroll;
+        height: 10em;
+        font-size: 1.2em;
+      }
+
+      h3 {
+      margin-left: 30%;
+      }
+
+      p.posts {
+        text-align: center;
+        overflow-y: scroll;
+        width: 40%;
+        height: 15em;
+        margin-left: 35%;
+        margin-right: 30%;
+      }
+
+      br {
+      font-size: 3em;
+      }
+
+      em.quotes {
+        font-size: 1.25em;
+
+      }
+
+      /*ALL of my links*/
+
+      a {
+        color: black;
+        text-decoration: none;
+      }
+
+      a:hover {
+      text-decoration-style: wavy;
+      text-decoration: underline;
+      }
+
+
+      /* One time things that I will never change again */
+      iframe{
+        width: 100%;
+      }
+
+      #Throwback_Monday{
+        height: 100%;
+      }
+
+      #qrcode
+      {
+        height: 100%;
+      }
+
+      #Movie
+      {
+        height: 100%;
+      }
+
+
+      @media screen and (max-width: 1200px)
+      {
+        .nav-links{
+          width: 60%;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 10%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 80%;
+          height: 15em;
+          margin-left: 15%;
+          margin-right: 10%;
+        }
+      }
+      @media screen and (max-width: 620px)
+      {
+        body{
+          overflow-x: hidden;
+        }
+
+        .nav-links{
+          position: absolute;
+          right: 0px;
+          height: 92vh;
+          top: 8vh;
+          background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20190630/pngtree-vector-white-background-with-abstract-geometric-pattern-or-textu-image_265390.jpg');
+          background-size: 35%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          transform: translateX(100%);
+          transition: transform 0.5s ease-in;
+        }
+
+        .nav-links li{
+          opacity: 0;
+        }
+
+        .burger{
+          display: block;
+        }
+
+        #table_of_contents
+        {
+          visibility: hidden;
+        }
+
+        h3 {
+        margin-left: 5%;
+        }
+
+        p.posts {
+          text-align: center;
+          overflow-y: scroll;
+          width: 75%;
+          height: 15em;
+          margin-left: 10%;
+          margin-right: 5%;
+        }
+      }
+
+
+
+      /*More stuff for the damn header*/
+
+      .nav-active{
+        transform: translateX(0%);
+      }
+
+      @keyframes navLinkFade{
+        from{
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to{
+          opacity: 1;
+          transform: translateX(0px);
+        }
+      }
+
+      .toggle .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+      }
+      .toggle .line2{
+        opacity: 0;
+      }
+      .toggle .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+      }
+
+    </style>
+
+  </head>
+  <body class="text">
+    <div class="background">
+
+    <!---  Title --->
+      <nav>
+        <div class="logo">
+          <h4>Eli's Blog</h4>
+        </div>
+        <ul class="nav-links">
+          <li class="links">
+            <a href="/homepage">Home</a>
+          </li>
+          <li class="links">
+            <a href="/movies_blog">Movies</a>
+          </li>
+          <li class="links">
+            <a href="/books_blog">Books</a>
+          </li>
+          <li class="links">
+            <a href="/quotes_blog">Quotes</a>
+          </li>
+        </ul>
+
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+
+
+
+    <br></br>
+    <!--- Blog Contents --->
+
+
+    <!-- Start of Table of Contents -->
+    <div id = "table_of_contents">
+      <h2 id = "Table">Table of Contents</h2>
+      <p id = "contents">
+        <a href = "#blog1">Today is a Great Day!</a><br></br>
+        <a href = "#blog2">A New Age Of Entrepreneurship</a><br></br>
+        <a href = "#blog3">Share The Data Man!</a><br></br>
+        <a href = "#blog4">Wanna Grind My Gears?</a><br></br>
+        <a href = "#blog5">The Hardest Thing...</a><br></br>
+        <a href = "#blog6">Pure Poetry</a><br></br>
+        <a href = "#blog7">Throwback Monday</a><br></br>
+        <a href = "#blog8">The Road Not Taken</a><br></br>
+        <a href = "#blog9">The UltraZ</a><br></br>
+        <a href = "#blog10">Just A Little Something I Learned</a><br></br>
+        <a href = "#blog11">What is a Word?</a><br></br>
+        <a href = "#blog12">A Stellar Movie</a><br></br>
+        <a href = "#blog13">Everyone Loves A Success Story</a><br></br>
+        <a href = "#blog14">Your Dog Can't Do Algebra</a><br></br>
+        <a href = "#blog15">Notes About Passions And Learning</a><br></br>
+        <a href = "#blog16">Whatcha Thinkin?</a><br></br>
+        <a href = "#blog17">SpaceX Starship Launch</a><br></br>
+
+
+      </p>
+    </div>
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog17">Blog Post 17: SpaceX Starship Launch</h3>
+
+          <p class = "posts" id = "Movie">
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/DC2nZUvBqOY?start=44" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog16">Blog Post 16: Whatcha Thinkin?</h3>
+
+          <p class = "posts">
+
+          <img height="100%" src="https://images-na.ssl-images-amazon.com/images/I/91Ulys0OZvL._SL1500_.jpg">
+
+          <br></br>
+
+          If I want to achieve the same things or similar things as my idols,  I often try and emulate them. This is the reason I have always been so intrigued by auto-biographies and biographies. I read these books on people to not only learn the physical things they did, but more importantly to get a look into their mind and thoughts. <i>I can promise you all extremely successful people have very similar thoughts and mindsets.</i> If you could look into the exact thoughts they were having then you could get a more concrete model for how you might want to think. The problem then is that books can't capture what is going on in someone's head very well. I have trouble recollecting something from a week ago, much less something I did a decade ago. Biographies are still the best thing we have for this, but what if it wasn't? What if in the future we had the ability to read people's thoughts in real time. This would be so revolutionary in many ways, but let's just look at the problem mentioned above. If I were successful in this hypothetical world, then I would certainly write a book about my thoughts. Let me explain. I would publish a book series over the course of my lifetime. Every year, five years, or whatever I would publish a book that is just my thoughts throughout the course of a week or something. (Assuming there would be an automated software that would record my thoughts as they happened) So it would be <b>literally all of my thoughts</b> over the course of a week. Then any young kid that wants to know how I became so successful can simply see how my mind works over the course of several years. By reading this they could see exactly what I am doing physically, but they could also see how I use my mental real estate. Today there is no way to know if the thoughts you are having are good enough to push you towards your goals, but maybe in the future we will be able to see just how different or similar these crazy successful people really are.
+
+          <br></br><em class = "quotes">“If the mind truly is the most powerful thing in the universe...Why are we wasting our precious thoughts on garbage” </em><br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog15">Blog Post 15: Notes About Passions And Learning</h3>
+
+          <p class = "posts">
+
+            One important aspect of my life is my enduring love for Artificial Intelligence(Ai). I figured I would explore how my passion for Ai started and grew over the years since it occupies so much real estate in my mind. While I am no expert by any means, I like to believe I had a very firm grip on the field. I guess the very first time I heard about this was in a movie called “Algorithms” or something of the like. You might deem me a nerd or geek for watching such a thing, but truly this is not the case. I am just very curious and open to all sorts of new things. Not to mention the trailer was eye catching. I can't remember what grade I was in, but it was probably around 2015 since that is the documentary's release date. This went on to explain all kinds of algorithms from simple ones like bubble sort and merge sort to some of the modern uses of Ai or learning algorithms like a movie recommendation system and an automatic amazon warehouse that learns increasingly efficient routes to gather a customer's order.  All of these incredible mathematical feats completely blew my mind and scared the s*** out of me at the same time. After I watched this I didn't just immediately fall in love with Ai because that just isn't how life tends to work. Rather, it was a gradual process where I began noticing and be consciously aware when Ai was brought up in conversations, movies, shows, and all kinds of media. I didn't do this on purpose, but my mind was just attracted and amazed enough that it began to listen. Then I came across the Joe Rogan podcast featuring Elon Musk. During the length of this, Elon covered all kinds of topics, and one of these was how he thought Ai would affect the future. I won't go into anymore detail about this podcast in case you want to watch it for yourself, but again, I was floored and terrified. I knew right then I just had to learn this stuff, so I could have an impact on the future. However, at this point in my life I wasn't sure how to teach myself much of anything to be honest. I began with futile searches on the internet such as “How does Ai work” and “Ai explained” in hopes that I would somehow find an entire field's worth of information in a google search. Needless to say, I didn't find anything other than a few blog posts and articles. Nobody teaches you how to teach yourself because they can't, and I was fed up. I had spent hours searching Google in hopes that I would learn this stuff but to no avail. A few weeks passed, and I couldn't stop worrying that the future was flying right past me. I tried to learn this stuff again, but this time I found some videos that were at the most mildly interesting at the time. I still had no idea about what Ai was, but in hindsight those videos explained exactly how a simple Artificial Neural Network(ANN) worked. The ANN is a very powerful form of Ai; although, I just didn't know it at the time. This is completely NORMAL. I read somewhere that learning math is like entering a dark room and stumbling around bumping into everything. Over the course of six months in the dark you learn where everything is, then you find the light switch. You turn it on, and suddenly, it's all illuminated. This is true for learning ANYTHING, not just math. When you start it is just such a struggle to understand anything, but slowly it comes together. Those videos that day were just enough to keep me searching the web every time I felt the urge to learn Ai.  Over the course of two or three years I have continued to learn more and more. If I had known that you never really stop learning, I probably wouldn't have started in the first place, but I am glad I did. Eventually I found some online courses that were extremely helpful and accounts for a vast majority of my knowledge. The key points of this post was... 1 I didn't just immediately know I loved Ai. That love had to be nurtured over a period of time. 2 Learning anything, especially a new field takes EXTREME perseverance. It sucks, it seems like you are going nowhere, your head hurts, and you just want to quit. However, if you give life the middle finger and keep bashing into the walls refusing to give up, eventually you will find some form of success.
+
+
+            <br></br><em class = "quotes">"It is not that I’m so smart. But I stay with the questions much longer." – Albert Einstein</em><br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog14">Blog Post 14: Your Dog Can't Do Algebra</h3>
+
+          <p class = "posts">
+
+            <img height="100%"src="https://imgix.bustle.com/inverse/b4/e7/4f/b6/fb35/47f5/b6aa/ced8cb9762c1.jpeg">
+
+            <br></br>
+
+            Have you ever tried to teach your dog math? I hope you haven't because you would be wasting your time. I don't think I need to further explain that a dog simply cannot fathom math, time, or a number of things that we humans can. Before feeling all high and mighty, remember there are 1 billion trillion stars in the universe... Who is the dog now? Maybe we are an extremely dumb lump of carbon trapped on our own planet. We know a dog is really stupid compared to a human, and the only biological difference that we know of to explain this is the size and number of folds are bigger in the human brain. Nevertheless, humans want to understand the whole UNIVERSE!  I don't know if we can or can't, and I can understand the arguments for whatever way someone wants to think about it. However, I think we need to spend more effort in upgrading our hardware so to speak. This could take many different forms such as expanding our biological brain, augmenting our intelligence with technology, or maybe creating a whole new kind of intelligence with tech and/or biological advances. If we want to ask the hardest questions about the most complex things in the universe we must first be consciously aware of everything, but are we already consciously aware of everything? Maybe. However, one thing is for sure, dogs can't do algebra!
+
+
+            <br></br><em class = "quotes">"Intelligence is the ability to adapt to change." - Stephen Hawking</em><br></br>
+
+          </p>
+    <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog13">Blog Post 13: Everyone Loves A Success Story</h3>
+
+          <p class = "posts">
+            When I think about inspiring things, at the top of the list are success stories. However, not just any old success. For example, someone can be apart of a team and find collective success or maybe work really hard on an exam and find expected success – success where the highest possible outcome is perceived as possible- but these are not the types that inspire me. I am talking about when all the odds are stacked against someone. Where everyone tells that person it just can't be done... then they go and do it anyway. When they are beaten down, when they are at their lowest point, and when they will either die! Or prevail. I'm talking about a success story where it comes down to pure willpower. That my friends is the kind of success that is inspiring. That is what keeps the world turning, and that is what humanity is all about. Some of us, for whatever reason, have a deep desire to beat the house, and against all odds, some of us will.
+
+
+            <br></br><em class = "quotes">"You Can Fail at What You Don't Want, So You Might as Well Take a Chance on Doing What You Love" - Jim Carrey</em><br></br>
+
+          </p>
+  <!--- End of Blog Post Format --->
+
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog12">Blog Post 12: A Stellar Movie</h3>
+
+          <p class = "posts" id = "Movie">
+            You can thank me later.
+
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/lB95KLmpLR4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+          </p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog11">Blog Post 11: What is a Word?</h3>
+
+          <p class = "posts">
+            This weekend I have given some thought to Ai as I usaully do. A large feat for Ai would be to learn and understand written human langauges. What is a human langauge? Well it is just words that represent things that we can sense with our eyes, ears, etc... If I were to think about a leaf I could imagine something that is green, maybe round-ish, that grows on a tree. Then all of these words are "linked" with other words. For example a dictionary is individual words described with other words, or how the leaf mentioned earlier is linked to "green", "round", and "tree". To finish up a langauge we then throw all of these words together in certain patterns to convey our thoughts and emotions. Today we have systems that can learn our langauge patterns very well. They can produce text in real time that seems to be written by a human, but as great as this is, it still doesn't understand the words. This is actaully a really incredible feat, but at the same time the process is quite underwelming. I think if a computer or piece of machinery is able to truly understand the meanings of words to some degree it must be able to translate our senses (eyesight, smell, hearing, etc...) into data it can correlate to that word, then be able to "remember" those correlations and apply them to the meanings of all other words, and finally be able to understand our langauge patterns to formulate sentences of meaning. The complexity of human langauge is a seemingly endless spiderweb of connections, and it is astonishing that our brains can learn such a structure.
+
+
+            <br></br><em class = "quotes">"The brain is the last and grandest biological frontier, the most complex thing we have yet discovered in our universe. It contains hundreds of billions of cells interlinked through trillions of connections. The brain boggles the mind." - James Watson</em><br></br>
+
+          </p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog10">Blog Post 10: A Little Something I Just Learned :)</h3>
+
+          <p class = "posts" id = "qrcode">
+            Take out your camera and point it at the qrcode!
+            <br></br>
+            <img src="https://i.imgur.com/YaNxDZz.png" title="source: imgur.com" / height = "300">
+          </p>
+  <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog9">Blog Post 8: The UltraZ</h3>
+
+          <p class = "posts">
+            As I was lying in my bed last night I thought about the internet and current technology, and how it has enabled and inspired me throughout my lifetime. I marveld at the thought that my generation, Gen Z, is the first generation to grow up with these reasources. Literally in every moment of history before my generation, there was no way to text someone, instantly search and learn something you might want to know, or countless other things revolving around the web. I began to think about what my life might be like if there were no cellphones to stay connected or no internet to browse. I came to the conclusion that I would not know a significant amount of the informaiton I know today. In this hypothetical situation, I would probably grow up, get a job in Jonesboro, and never really know what else is out there. I consider myself lucky to be born when I was. Of course there will be many people born as a Gen Z that will not take advantage of these tremendous reasources, but that is perfectly normal. However, I beleive Gen Z will produce a significant increase in <i>outstanding individuals</i>. These are the people that want to make an impact on the world. I have chosen to call these individuals "UltraZ". (Pronounced: <i>Ultras</i>) The word ultra means "an extremist", and I think there will be more extreme people born from Gen Z that won't accept a normal life. Hence the "Z" in UltraZ.  There is no way to determine how many UltraZ this current tech will produce, but it will be more that previous generations have produced. I predict this will happen for a couple of reasons. One reason is because these UltraZ have seen it all. Before the internet there was so much that you couldn't see and do for a number of reasons. This is not a problem for UltraZ, for they can go and do anything through the screen of their computers. If you know what the world can offer you, the more likly it is to know what you want and don't want. This is huge. Too many people die never knowing who they are and what truly made them happy and fufilled. However, the UltraZ will know. The second reason is becuase once these UltraZ know what they want to do, they can actually pursue it. If I wanted to learn about a topic pre-internet, I would just have to hope I knew someone who had already learned about it or hope my local bookstore or library had a few books on the topic. Needless to say, this is an extreme barrier compared to the seemingly unlimited information found on the web. Although, there are many more reasons that Gen Z will produce a whole wave of UltraZ, but these two arguably the most significant. These UltraZ will know exactly what they want, have the ability to go get it, and these special people will come in <i>abundance</i>.
+
+            <br></br><em class = "quotes">"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</em><br></br>
+          </p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog7">Blog Post 7: Throwback Monday</h3>
+
+          <p class = "posts" id = "Throwback_Monday">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/fudXePM37eE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <br></br><em class = "quotes">"I am never so happy as when I am really engaged in good earnest, & it makes me must wonderfully cheerful & merry at other times, which is curious & very satisfactory." - Ada Lovelace</em><br></br>
+          </p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog6">Blog Post 6: Pure <u>Poetry</u></h3>
+
+          <p class = "posts">
+            <em class = "quotes">"Here’s to the crazy ones, the misfits, the rebels, the troublemakers, the round pegs in the square holes… the ones who see things differently — they’re not fond of rules… You can quote them, disagree with them, glorify or vilify them, but the only thing you can’t do is ignore them because they change things… they push the human race forward, and while some may see them as the crazy ones, we see genius, because the ones who are crazy enough to think that they can change the world, are the ones who do." - Steve Jobs</em><br></br>
+
+            Jesus what a great piece of art. This is literary gold pouring from screen into my brain. I decided to start this post with a quote because this particular post has no purpose really? Like this post won't talk about anything too important. Nonetheless, this is by far one of the most inspiring few sentences on earth...Ever! Or that is my opinion at least. There are just very few people who can do a great job of making others feel their emotions only using words. My favorite songs all have lyrics that are hand-picked to perfection. Robert Frost's <u>The Road Not Taken</u> is a very clever poem that uses precise diction to convey his deepest emotions. My point is I am a sucker for words! I just thought the reader might enjoy this motivating quote. Heck. Maybe it could set the reader off on their own journey and change their lives. Probably not, but maybe!
+          </p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog5">Blog Post 5: The Hardest Thing...</h3>
+
+          <p class = "posts">What is the hardest thing for all humans to do? I've given this some thought, and I have determined what I believe the hardest thing is... creativity. It is interesting that this is the single thing that separates us from all other animals. First let's look at the definition of creativity, "The use of the imagination or <i>original ideas</i>, especially in the production of an artistic work." The key element here is that this involves <i>new</i> ideas. Now that we know this, we can see how creativity is the hardest thing. If I were to set a goal to make a million dollars, then I would probably learn how other people have done this. Then I would follow their steps or at least use their experience to aid my own. However, if my goal were to involve creativity or doing something original, then I would not have these other people to learn from. Sure I can learn about other creative people, but I cannot learn something that has never been done before. This is why creativity is the hardest thing.
+
+            <br></br><em class = "quotes">"The desire to create is one of the deepest yearnings of the human soul." - Dieter F. Uchtdorf</em></p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog4">Blog Post 4: Wanna Grind My Gears?</h3>
+
+          <p class = "posts">I am so frustrated with teachers that don't care about their jobs. Teaching is one of the most important jobs in the world, yet there are still countless teachers that don't do their jobs at a high level. It isn't all their fault because many students don't care about learning either. However, that is no excuse to do their job poorly! I have had countless teachers that just didn't teach their subject well, and lets be forgiving here and just say they weren't good at their job. HOWEVER! I have had just as many teachers that don't try, and in order to look like they are actually doing something in the classroom they will give an ungodly amount of brain dead meaningless assignments that the student must endure to get a good grade. This is abusurd! No wonder learning and being smart has such a poor reputation. Students think that to be smart all you have to do is complete these boring and uninspiring assignments. There is so much more to learning, and I feel so bad for all the students who will go through their whole lives without knowing what true learning is. My point here is that if you are a teacher, and you don't feel like teaching then don't. Although, DO NOT give your students dumb unintelligable pointless busy work because you are too lazy to actually teach. My time is the most precious thing I have, and it just grinds my gears when I am forced to waste it on these moronic assignments.
+
+            <br></br><em class = "quotes">“We all know our money isn’t infinite, yet we end up treating our time and energy and attention as if they are.” - Shane Parrish</em></p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog3">Blog Post 3: Share The Data Man!</h3>
+
+          <p class = "posts">Last night I had one of the greatest ideas I've ever had. I was thinking about the future, and how it was going to be better. One aspect that makes a company better than all the others is integration. How the best companies really are one full completely connected unit. This has to be the way of the future! In the future everything must be connected and efficient. This was definitley a eureka moment. So I began thinking about what this hyper connected world would be cabable of, and this is when AssIst was born. AssIst is a personal Ai assistant that will automate your schedual. As I continued to develope this idea, I realised that this could only happen if the data from all of these big companies would be shared in some way in this futuristic world. I think since this is the users' data, if they would like their data from these companies to be shared it should be required for the company that holds the orignial data to share it. The complany receiving the data should ceretainly have to pay for it in some way, but it should not cost too much. A good business structure for AssIst would be a monthly subscriptioin with different levels of assistance. Since the more data AssIst has to buy in order to provide theese levels of assistance the more it costs, it should be porportional to the users' monthly payment. When the data of the world becomes free flowing instead of being protected within these large companies the world will see a tremedous amount of growth and innovation.
+
+            <br></br><em class = "quotes">“Creativity is just connecting things.” - Steve Jobs</em></p>
+  <!--- End of Blog Post Format --->
+
+  <!--- Blog Post Format--->
+        <h3 id = "blog2">Blog Post 2: A New Age Of Entrepreneurship</h3>
+
+          <p class = "posts">The entrepreneur has been steadliy changing ever since the computer revolution, and this trend will continue on into future generations. The early entrepreneurs of America like Carnegie, Rockefeller, and Vanderbilt didn't have to know much about the product. They more or less had to get lucky and be in the right place at the right time. Andrew Carnegie said many times he knew very little about the process of steel manufactering. Then the computer revolution started. The entrepreneurs of that day and age had to know more about the product. Steve Jobs, Bill Gates, and Steve Wozoniak knew their products much better than the industry titans of before. This was due to the fact that these new companies actually had purpose. Being in the right place at the right time still had some impact, but especially through the dotcom revolution,an individuals circumstances would have less impact on their ability to change the world. Apple and Microsoft's goals were to revolutionize how the world worked through computers. This trend would continue on through the dotcom boom. Twenty years later the entrepreneur is still growing. A prime example of the modern entrepreneur is Elon Musk. He has started many companies that plan on impacting the world in a significant way, and the number of companies is a testament to how little being in the right place at the right time has to do with anything these days. As I mentioned earlier, the entrepreneur's knowledge of his product had vastly improved since the robber barron era, and this is very apparent with Musk. He has an intellectual grip on all of his companies that is well beyond the grip Steve Jobs ever had on Apple. Future entrepreneurs will likly continue this trend and have a better understanding than even Elon has. This new era of entrepreneurs will not be hindered by being in a perfect circumstance, and they must know every facet of their business and industry in order to innovate in a significant way.
+
+          <br></br><em class = "quotes">"Persistence is very important. You should not give up unless you are forced to give up." - Elon Musk</em>
+          </p>
+  <!--- End of Blog Post Format --->
+
+    <!--- Blog Post Format--->
+        <h3 id = "blog1">Blog Post 1: Today is a <i>Great</i> Day!</h3>
+
+          <p class = "posts">Latley I have been very upset with the negative attitudes towards our election, country, and world in general. Many people seem to think that this is a terrible time to be alive, and that everything is going downhill. My message to these people is... Don't hang around me. This just simply is not true in the slightest. The quality of life for the average person has and is going up no matter what method you use to track this. Thinking everything is just so horrnedous is a very cynical way to live, and this mindset will take its toll on whoever's ears it may fall on. Reguardless of what the future may hold, it doesn't even make logical sense to be a pessimist. Most of the things people tend to deem are "going downhill" isn't even in their own control. Therefore, given the option to be a pessimist or an optomist, why would anyone choose pessimist? Yet I would say the majority of people do! Facebook is just hundreds of Eors moping around like this isn't the best possible time to be alive literally EVER! I would much rather be an optimist and wrong than a pesismist and right.
+
+          <br></br><em class = "quotes">“The world is getting better, even if it doesn’t always feel that way,” - Bill Gates</em></p>
+  <!--- End of Blog Post Format --->
+
+
+  </div>
+
+    <script>
+      const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index / 7);
+          link.style.animation = 'navLinkFade 1s ease forwards 1s';
+        });
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    </script>
+  </body>
+</html>

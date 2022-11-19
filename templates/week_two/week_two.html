@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<!DOCTYPE html><html lang="en-us">
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta property="og:description" content="Introduction to the intellectual enterprises of computer science and the art of programming. This course teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, and software engineering. Languages include C, Python, and SQL plus students' choice of: HTML, CSS, and JavaScript (for web development); Java or Swift (for mobile app development); or Lua (for game development). Problem sets inspired by the arts, humanities, social sciences, and sciences. Course culminates in a final project. Designed for concentrators and non-concentrators alike, with or without prior programming experience. Two thirds of CS50 students have never taken CS before. Among the overarching goals of this course are to inspire students to explore unfamiliar waters, without fear of failure, create an intensive, shared experience, accessible to all students, and build community among students.">
+
+<meta property="og:image" content="https://img.youtube.com/vi/e9Eds2Rc_x8/maxresdefault.jpg"><meta property="og:title" content="Week 2 - CS50x"><link href="https://cs50.harvard.edu/x/2020/favicon.ico?1608231730" rel="icon">
+
+<!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+<!-- http://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/jquery/dist/jquery.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap/dist/js/bootstrap.bundle.min.js?1608231730"></script>
+
+<!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+<link href="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1608231730"></script>
+
+<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+<link href="https://cs50.harvard.edu/x/2020/assets/@fortawesome/fontawesome-free/css/all.min.css?1608231730" rel="stylesheet">
+
+<!-- https://moment.github.io/luxon/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/luxon.min.js?1608231730"></script>
+
+<!-- http://docs.mathjax.org/ -->
+<!-- https://www.jsdelivr.com/package/npm/mathjax?path=es5 -->
+<script crossorigin="anonymous" integrity="sha256-+nfSJ1LiSvANSK3wvi6FjM+oFwoIQvURU1frozp5z6o=" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-chtml.js"></script>
+
+
+
+<link href="https://cs50.harvard.edu/x/2020/assets/page.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/jekyll-theme-cs50.js?1608231730"></script>
+
+<script>
+    window.CS50 = {
+        locale: "en",
+        tz: "America/New_York"
+    };
+</script>
+
+<title>Week 2 - CS50x</title>
+
+{% endblock %}
+
+
+{% block main %}
+
+                <main class="col-md">
+
+                    <ul class="nav">
+                    <li class="nav-item">
+                      <h1>Week 2</h1>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_two#read">Readability</a></h3>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_two#sub">Substitution</a></h3>
+                    </li>
+                  </ul>
+
+    <!-- Readability --->
+
+    <h2><a id="read" href="/readability">Readability</a>&nbsp;&nbsp;&nbsp;<---- My Project!</h2>
+
+    <p>According to <a href="https://www.scholastic.com/teachers/teaching-tools/collections/guided-reading-book-lists-for-every-level.html">Scholastic</a>, E.B. White’s “Charlotte’s Web” is between a second and fourth grade reading level, and Lois Lowry’s “The Giver” is between an eighth grade reading level and a twelfth grade reading level. What does it mean, though, for a book to be at a “fourth grade reading level”?</p>
+
+    <p>Well, in many cases, a human expert might read a book and make a decision on the grade for which they think the book is most appropriate. But you could also imagine an algorithm attempting to figure out what the reading level of a text is.</p>
+
+    <p>So what sorts of traits are characteristic of higher reading levels? Well, longer words probably correlate with higher reading levels. Likewise, longer sentences probably correlate with higher reading levels, too. A number of “readability tests” have been developed over the years, to give a formulaic process for computing the reading level of a text.</p>
+
+    <p>One such readability test is the Coleman-Liau index. The Coleman-Liau index of a text is designed to output what (U.S.) grade level is needed to understand the text.</p>
+
+    <h3>Implementation</h3>
+
+    <p>Implement a program that computes the approximate grade level needed to comprehend some text, per the below.</p>
+
+    <h3>Example</h3>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./readability
+    Text: Congratulations! Today is your day. You're off to Great Places! You're off and away!
+    Grade 3
+    </code></pre></div></div>
+
+
+
+    <!-- Substitution --->
+
+    <h2><a id="sub" href="/substitution">Substitution</a>&nbsp;&nbsp;&nbsp;<---- My Project!</h2>
+
+    <p>In a substitution cipher, we “encrypt” (i.e., conceal in a reversible way) a message by replacing every letter with another letter. To do so, we use a <em>key</em>: in this case, a mapping of each of the letters of the alphabet to the letter it should correspond to when we encrypt it. To “decrypt” the message, the receiver of the message would need to know the key, so that they can reverse the process: translating the encrypt text (generally called <em>ciphertext</em>) back into the original message (generally called <em>plaintext</em>).</p>
+
+    <p>A key, for example, might be the string <code class="language-plaintext highlighter-rouge">NQXPOMAFTRHLZGECYJIUWSKDVB</code>. This 26-character key means that <code class="language-plaintext highlighter-rouge">A</code> (the first letter of the alphabet) should be converted into <code class="language-plaintext highlighter-rouge">N</code> (the first character of the key), <code class="language-plaintext highlighter-rouge">B</code> (the second letter of the alphabet) should be converted into <code class="language-plaintext highlighter-rouge">Q</code> (the second character of the key), and so forth.</p>
+
+    <p>A message like <code class="language-plaintext highlighter-rouge">HELLO</code>, then, would be encrypted as <code class="language-plaintext highlighter-rouge">FOLLE</code>, replacing each of the letters according to the mapping determined by the key.</p>
+
+    <p>Let’s write a program called <code class="language-plaintext highlighter-rouge">substitution</code> that enables you to encrypt messages using a substitution cipher. At the time the user executes the program, they should decide, by providing a command-line argument, on what the key should be in the secret message they’ll provide at runtime.</p>
+
+    <h3>Implementation</h3>
+
+    <p>Design and implement a program, <code class="language-plaintext highlighter-rouge">substitution</code>, that encrypts messages using a substitution cipher.</p>
+
+    <h3>Example</h3>
+
+    <p>Here’s how the program might work if the user provides a key of <code class="language-plaintext highlighter-rouge">VCHPRZGJNTLSKFBDQWAXEUYMOI</code> and a plaintext of <code class="language-plaintext highlighter-rouge">hello, world</code>:</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./substitution VCHPRZGJNTLSKFBDQWAXEUYMOI
+    plaintext:  hello, world
+    ciphertext: jrssb, ybwsp
+    </code></pre></div></div>
+
+                </main>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+</body>
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/2/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+</html>
+
+{% endblock %}

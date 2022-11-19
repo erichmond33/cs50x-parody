@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<!DOCTYPE html><html lang="en-us">
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/3/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta property="og:description" content="Introduction to the intellectual enterprises of computer science and the art of programming. This course teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, and software engineering. Languages include C, Python, and SQL plus students' choice of: HTML, CSS, and JavaScript (for web development); Java or Swift (for mobile app development); or Lua (for game development). Problem sets inspired by the arts, humanities, social sciences, and sciences. Course culminates in a final project. Designed for concentrators and non-concentrators alike, with or without prior programming experience. Two thirds of CS50 students have never taken CS before. Among the overarching goals of this course are to inspire students to explore unfamiliar waters, without fear of failure, create an intensive, shared experience, accessible to all students, and build community among students.">
+
+<meta property="og:image" content="https://img.youtube.com/vi/e9Eds2Rc_x8/maxresdefault.jpg"><meta property="og:title" content="Week 3 - CS50x"><link href="https://cs50.harvard.edu/x/2020/favicon.ico?1608231730" rel="icon">
+
+<!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+<!-- http://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/jquery/dist/jquery.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap/dist/js/bootstrap.bundle.min.js?1608231730"></script>
+
+<!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+<link href="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1608231730"></script>
+
+<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+<link href="https://cs50.harvard.edu/x/2020/assets/@fortawesome/fontawesome-free/css/all.min.css?1608231730" rel="stylesheet">
+
+<!-- https://moment.github.io/luxon/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/luxon.min.js?1608231730"></script>
+
+<!-- http://docs.mathjax.org/ -->
+<!-- https://www.jsdelivr.com/package/npm/mathjax?path=es5 -->
+<script crossorigin="anonymous" integrity="sha256-+nfSJ1LiSvANSK3wvi6FjM+oFwoIQvURU1frozp5z6o=" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-chtml.js"></script>
+
+
+
+<link href="https://cs50.harvard.edu/x/2020/assets/page.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/jekyll-theme-cs50.js?1608231730"></script>
+
+<script>
+    window.CS50 = {
+        locale: "en",
+        tz: "America/New_York"
+    };
+</script>
+
+<title>Week 3 - CS50x</title>
+
+{% endblock %}
+
+
+{% block main %}
+
+                <main class="col-md">
+
+                    <ul class="nav">
+                    <li class="nav-item">
+                      <h1>Week 3</h1>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_three#plur">Plurality</a></h3>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_three#tide">Tideman</a></h3>
+                    </li>
+                  </ul>
+
+<!-- Plurality --->
+
+    <h2><a id="plur" href="/plurality">Plurality</a>&nbsp;&nbsp;&nbsp;<---- My Project!</h2>
+
+    <p>Perhaps the simplest way to hold an election, though, is via a method commonly known as the “plurality vote” (also known as “first-past-the-post” or “winner take all”). In the plurality vote, every voter gets to vote for one candidate. At the end of the election, whichever candidate has the greatest number of votes is declared the winner of the election.</p>
+
+    <h3>Example</h3>
+
+    <p>Implement a program that runs a plurality election, per the below.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ./plurality Alice Bob Charlie
+    Number of voters: 4
+    Vote: Alice
+    Vote: Bob
+    Vote: Charlie
+    Vote: Alice
+    Alice
+    </code></pre></div></div>
+
+    <!-- Tideman --->
+
+    <h2><a id="tide" href="/tideman">Tideman</a>&nbsp;&nbsp;&nbsp;<---- My Project!</h2>
+
+    <p>You already know about plurality elections, which follow a very simple algorithm for determining the winner of an election: every voter gets one vote, and the candidate with the most votes wins.</p>
+
+    <p>But the plurality vote does have some disadvantages. What happens, for instance, in an election with three candidates, and the ballots below are cast?</p>
+
+    <p><img src="https://cs50.harvard.edu/x/2020/psets/3/fptp_ballot_1.png" alt="Five ballots, tie betweeen Alice and Bob"></p>
+
+    <p>A plurality vote would here declare a tie between Alice and Bob, since each has two votes. But is that the right outcome?</p>
+
+    <p>There’s another kind of voting system known as a ranked-choice voting system. In a ranked-choice system, voters can vote for more than one candidate. Instead of just voting for their top choice, they can rank the candidates in order of preference. The resulting ballots might therefore look like the below.</p>
+
+    <p><img src="https://cs50.harvard.edu/x/2020/psets/3/ranked_ballot_1.png" alt="Three ballots, with ranked preferences"></p>
+
+    <h3>Example</h3>
+
+    <p>Implement a program that runs a Tideman election, per the below.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./tideman Alice Bob Charlie
+    Number of voters: 5
+    Rank 1: Alice
+    Rank 2: Charlie
+    Rank 3: Bob
+
+    Rank 1: Alice
+    Rank 2: Charlie
+    Rank 3: Bob
+
+    Rank 1: Bob
+    Rank 2: Charlie
+    Rank 3: Alice
+
+    Rank 1: Bob
+    Rank 2: Charlie
+    Rank 3: Alice
+
+    Rank 1: Charlie
+    Rank 2: Alice
+    Rank 3: Bob
+
+    Charlie
+    </code></pre></div></div>
+
+                </main>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+</body>
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/3/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:46 GMT -->
+</html>
+
+{% endblock %}

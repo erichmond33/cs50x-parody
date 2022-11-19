@@ -1,0 +1,354 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+<!DOCTYPE html><html lang="en-us">
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:45 GMT -->
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta property="og:description" content="Introduction to the intellectual enterprises of computer science and the art of programming. This course teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, and software engineering. Languages include C, Python, and SQL plus students' choice of: HTML, CSS, and JavaScript (for web development); Java or Swift (for mobile app development); or Lua (for game development). Problem sets inspired by the arts, humanities, social sciences, and sciences. Course culminates in a final project. Designed for concentrators and non-concentrators alike, with or without prior programming experience. Two thirds of CS50 students have never taken CS before. Among the overarching goals of this course are to inspire students to explore unfamiliar waters, without fear of failure, create an intensive, shared experience, accessible to all students, and build community among students.">
+
+<meta property="og:image" content="https://img.youtube.com/vi/e9Eds2Rc_x8/maxresdefault.jpg"><meta property="og:title" content="Week 1 - CS50x"><link href="https://cs50.harvard.edu/x/2020/favicon.ico?1608231730" rel="icon">
+
+<!-- https://fonts.google.com/specimen/PT+Sans?query=PT+Sans&selection.family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700 -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+
+<!-- http://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/jquery/dist/jquery.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap/dist/js/bootstrap.bundle.min.js?1608231730"></script>
+
+<!-- https://bootstrap-table.com/docs/getting-started/introduction/ -->
+<link href="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/bootstrap-table.min.js?1608231730"></script>
+<script src="https://cs50.harvard.edu/x/2020/assets/bootstrap-table/dist/extensions/mobile/bootstrap-table-mobile.min.js?1608231730"></script>
+
+<!-- https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use -->
+<link href="https://cs50.harvard.edu/x/2020/assets/@fortawesome/fontawesome-free/css/all.min.css?1608231730" rel="stylesheet">
+
+<!-- https://moment.github.io/luxon/ -->
+<script src="https://cs50.harvard.edu/x/2020/assets/luxon.min.js?1608231730"></script>
+
+<!-- http://docs.mathjax.org/ -->
+<!-- https://www.jsdelivr.com/package/npm/mathjax?path=es5 -->
+<script crossorigin="anonymous" integrity="sha256-+nfSJ1LiSvANSK3wvi6FjM+oFwoIQvURU1frozp5z6o=" src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-chtml.js"></script>
+
+
+
+<link href="https://cs50.harvard.edu/x/2020/assets/page.css?1608231730" rel="stylesheet">
+<script src="https://cs50.harvard.edu/x/2020/assets/jekyll-theme-cs50.js?1608231730"></script>
+
+
+<style>
+  .pyrimid {
+    text-align: center;
+    font-size: 1em;
+  }
+
+</style>
+
+<script>
+    window.CS50 = {
+        locale: "en",
+        tz: "America/New_York"
+    };
+
+
+</script>
+
+<title>Week 7 - CS50x</title>
+
+{% endblock %}
+
+
+{% block main %}
+
+                <main class="col-md">
+
+                    <ul class="nav">
+                    <li class="nav-item">
+                      <h1>Week 7</h1>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_seven#movies">Movies</a></h3>
+                    </li>
+                    <li class="nav-item">
+                      <h3><a class="nav-link active" href="/week_seven#houses">Houses</a></h3>
+                    </li>
+                  </ul>
+
+<!-- HOUSES -->
+
+  <h2>Houses</h2>
+
+  <form action="/houses" method="post">
+
+    <div class="form-group">
+        <label>Select a house</label>
+        <select class="custom-select" name="v2">
+          <option selected>Choose a house</option>
+          <option value="Gryffindor">Gryffindor</option>
+          <option value="Hufflepuff">Hufflepuff</option>
+          <option value="Ravenclaw">Ravenclaw</option>
+          <option value="Slytherin">Slytherin</option>
+
+          </select>
+    </div>
+
+  <button class="btn btn-primary" type="submit">Get House Roster</button>
+
+  </form>
+
+<br>
+
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight pyrimid"><code>
+
+    <h3>{{ input }}</h3>
+{{ output }}
+    </code></pre></div></div>
+
+
+   <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h3>Student Database</h3>
+                    </button>
+                  </h5>
+            </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                    <table class="table table-bordered table-hover table-condensed">
+                    <thead><tr><th title="Field #1">Name</th>
+                    <th title="Field #2">House</th>
+                    <th title="Field #3">Birth</th>
+                    </tr></thead>
+                    <tbody><tr>
+                    <td>Adelaide Murton</td>
+                    <td>Slytherin</td>
+                    <td align="right">1982</td>
+                    </tr>
+                    <tr>
+                    <td>Adrian Pucey</td>
+                    <td>Slytherin</td>
+                    <td align="right">1977</td>
+                    </tr>
+                    <tr>
+                    <td>Anthony Goldstein</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Blaise Zabini</td>
+                    <td>Slytherin</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Cedric Diggory</td>
+                    <td>Hufflepuff</td>
+                    <td align="right">1977</td>
+                    </tr>
+                    <tr>
+                    <td>Cho Chang</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Colin Creevey</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1981</td>
+                    </tr>
+                    <tr>
+                    <td>Dean Thomas</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Draco Lucius Malfoy</td>
+                    <td>Slytherin</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Ernest Macmillan</td>
+                    <td>Hufflepuff</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Ginevra Molly Weasley</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1981</td>
+                    </tr>
+                    <tr>
+                    <td>Gregory Goyle</td>
+                    <td>Slytherin</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Hannah Abbott</td>
+                    <td>Hufflepuff</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Harry James Potter</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Hermione Jean Granger</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Isobel MacDougal</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Justin Finch-Fletchley</td>
+                    <td>Hufflepuff</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Lavender Brown</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Lisa Turpin</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Luna Lovegood</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1981</td>
+                    </tr>
+                    <tr>
+                    <td>Mandy Brocklehurst</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Marcus Flint</td>
+                    <td>Slytherin</td>
+                    <td align="right">1975</td>
+                    </tr>
+                    <tr>
+                    <td>Marietta Edgecombe</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1978</td>
+                    </tr>
+                    <tr>
+                    <td>Michael Corner</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Millicent Bulstrode</td>
+                    <td>Slytherin</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Neville Longbottom</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Padma Patil</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Pansy Parkinson</td>
+                    <td>Slytherin</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Parvati Patil</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Penelope Clearwater</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1976</td>
+                    </tr>
+                    <tr>
+                    <td>Robert Hilliard</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1974</td>
+                    </tr>
+                    <tr>
+                    <td>Roger Davies</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1978</td>
+                    </tr>
+                    <tr>
+                    <td>Romilda Vane</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1981</td>
+                    </tr>
+                    <tr>
+                    <td>Ronald Bilius Weasley</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Seamus Finnigan</td>
+                    <td>Gryffindor</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Susan Bones</td>
+                    <td>Hufflepuff</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Terence Higgs</td>
+                    <td>Slytherin</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    <tr>
+                    <td>Terry Boot</td>
+                    <td>Ravenclaw</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Tracey Davis</td>
+                    <td>Slytherin</td>
+                    <td align="right">1980</td>
+                    </tr>
+                    <tr>
+                    <td>Vincent Crabbe</td>
+                    <td>Slytherin</td>
+                    <td align="right">1979</td>
+                    </tr>
+                    </tbody></table>
+
+
+              </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+                </main>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+</body>
+<!-- Mirrored from cs50.harvard.edu/x/2020/weeks/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Dec 2020 04:45:45 GMT -->
+</html>
+
+{% endblock %}
