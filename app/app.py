@@ -13,7 +13,7 @@ import subprocess
 import binascii
 import time
 
-from psets import check_card, luhns_algo, check_grade, dna, compare_dict, sort_roster, substitute, check_repitition
+from app.psets import check_card, luhns_algo, check_grade, dna, compare_dict, sort_roster, substitute, check_repitition
 
 # Configure application
 app = Flask(__name__)
